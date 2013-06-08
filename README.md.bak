@@ -1,0 +1,4 @@
+16-Bit-ALU
+==========
+
+The ALU is a combinational logic unit. It takes two inputs of 16 bits wide and performs Logic and Arithmetic’s operations. There are two outputs from ALU: 32-bit output c and 7-bit Flag signals.Verilog  is used for the implementation. 

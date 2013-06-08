@@ -21,8 +21,8 @@
 //
 //////////////////////////////////////////////////////////////////////////////////
 module alu16(a, b, c, op, enable, flags);
-	input [16:1] a;// 1st signal
-   input [16:1] b;// 2nd signal
+	input [64:1] a;// 1st signal
+   input [64:1] b;// 2nd signal
    input [6:1] op;// opcode operation to be performed
 	input enable;
 	output [32:1] c;// output signal
@@ -136,12 +136,7 @@ module alu16(a, b, c, op, enable, flags);
 								6'd5:c=a*b;
 								//division
 								6'd6:begin
-										if(b==16'd0)//checking for divide by zero
-										flags[2]=1'b1;//true - making divide by zero flag 1
-										else if ( a >4 | b>4)
-										flags[1]=1'b1;
-										else
-										c = d_rom[a][b];
+										Division64(a,b,c,clk
 								end
 								// modulus or remainder
 								6'd7:begin
