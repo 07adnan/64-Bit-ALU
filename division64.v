@@ -22,26 +22,27 @@
 //////////////////////////////////////////////////////////////////////////////////
 
 
-module divide(ready,quotient,remainder,dividend,divider,sign,clk);
+//module division(ready,quotient,dividend,divider,sign,clk);
+task division64;
 input         clk;
 input         sign;
 input [31:0]  dividend, divider;
 output [31:0] quotient, remainder;
 output        ready;
 
-reg [31:0]    quotient, quotient_temp;
+	reg [31:0]    quotient, quotient_temp;
    reg [63:0]    dividend_copy, divider_copy, diff;
    reg           negative_output;
    
-   wire [31:0]   remainder = (!negative_output) ?  dividend_copy[31:0] : ~dividend_copy[31:0] + 1'b1;
+   reg [31:0]   remainder = (!negative_output) ?  dividend_copy[31:0] : ~dividend_copy[31:0] + 1'b1;
 
    reg [5:0]     bit; 
-   wire          ready = !bit;
+   reg          ready = !bit;
 
-   initial bit = 0;
-   initial negative_output = 0;
+//   initial bit = 0;
+//   initial negative_output = 0;
 
-   always @( posedge clk ) 
+ //  always @( posedge clk ) 
 
      if( ready ) begin
 
@@ -72,4 +73,5 @@ reg [31:0]    quotient, quotient_temp;
         bit = bit - 1'b1;
 
      end
-endmodule
+	 endtask
+//endmodule
